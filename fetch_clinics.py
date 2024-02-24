@@ -20,11 +20,7 @@ def fetch_all_pages(url, params, num_pages):
 
 
 def get_unique_orgs(data):
-    unique_orgs = set()
-    for study in data:
-        org_name = study['protocolSection']['identificationModule']['organization']['fullName']
-        unique_orgs.add(org_name)
-    return unique_orgs
+    return {study['protocolSection']['identificationModule']['organization']['fullName'] for study in data}
 
 url = 'https://clinicaltrials.gov/api/v2/studies'
 query_params = {'filter.geo': 'distance(38.634841,-90.439453,50mi)', 'filter.overallStatus': [ 'RECRUITING' ]}
