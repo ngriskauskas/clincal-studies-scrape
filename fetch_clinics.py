@@ -27,8 +27,10 @@ def get_unique_orgs(data):
     return unique_orgs
 
 url = 'https://clinicaltrials.gov/api/v2/studies'
-query_params = {'filter.geo': 'distance(31.0000,-100.0000,100mi)'}
-all_data = fetch_all_pages(url, query_params, 1000)
+query_params = {'filter.geo': 'distance(38.634841,-90.439453,50mi)', 'filter.overallStatus': [ 'RECRUITING' ]}
+all_data = fetch_all_pages(url, query_params, 50)
+
+
 
 unique_orgs = get_unique_orgs(all_data)
 pprint(unique_orgs)
